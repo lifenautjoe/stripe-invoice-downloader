@@ -35,6 +35,12 @@ async function downloadInvoicePDF(invoiceId) {
   }
   const pdfFilename = `${folderPath}/${year}-${month}-${day}-${invoice.number}.pdf`;
 
+  // Check if the file already exists
+  if (fs.existsSync(pdfFilename)) {
+    console.log(`Invoice-${invoice.number} already exists. Skipping download.`);
+    return;
+  }
+
   // Download and save the invoice PDF
   const pdfUrl = invoice.invoice_pdf;
   const response = await axios.get(pdfUrl, { responseType: "stream" });
