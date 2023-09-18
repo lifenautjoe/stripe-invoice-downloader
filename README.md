@@ -2,7 +2,7 @@
 
 [![Creative Commons License](https://i.creativecommons.org/l/by/4.0/88x31.png)](http://creativecommons.org/licenses/by/4.0/)
 
-This utility is designed to help businesses automatically download their invoices from Stripe for a specified year. Using this command-line utility, you can define where the invoices are saved and how many files to download in parallel to make the process efficient.
+This utility is designed to help you automatically download your invoices from Stripe for a specified year. Using this command-line utility, you can define where the invoices are saved and how many files to download in parallel to make the process efficient.
 
 ## Features:
 - Download all invoices for a specified year.
@@ -71,7 +71,3 @@ Contributions are welcome! If you find a bug or think of a new feature, please o
 ## License:
 
 Creative Commons Attribution (CC BY)
-
----
-
-Remember to adapt the README if there are specific nuances to your project or additional features you'd like to document.
