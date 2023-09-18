@@ -2,7 +2,6 @@ const fs = require("fs");
 const path = require("path");
 const axios = require("axios");
 const chalk = require("chalk");
-const readline = require('readline');
 
 require("dotenv").config();
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
@@ -18,7 +17,7 @@ const mkdirp = require("mkdirp");
 
 async function downloadInvoicePDF(invoice, downloadPath) {
   if (!invoice.invoice_pdf) {
-    console.log(`No PDF available for Invoice-${invoice.number}.`);
+    console.error(`No PDF available for Invoice-${invoice.number}.`);
     return;
   }
 
@@ -35,7 +34,9 @@ async function downloadInvoicePDF(invoice, downloadPath) {
   const pdfFilename = `${folderPath}/${year}-${month}-${day}-${invoice.number}.pdf`;
 
   if (fs.existsSync(pdfFilename)) {
-    console.log(`Invoice-${invoice.number} already exists. Skipping download.`);
+    console.warn(
+      `Invoice-${invoice.number} already exists. Skipping download.`
+    );
     return;
   }
 
@@ -50,6 +51,8 @@ async function downloadInvoicePDF(invoice, downloadPath) {
 }
 
 async function fetchInvoicesForYear(year) {
+  console.log(`Fetching invoices for ${year} ...`);
+
   const listOptions = {
     created: {
       gte: new Date(year, 0, 1).getTime() / 1000,
@@ -75,6 +78,9 @@ async function fetchInvoicesForYear(year) {
       startingAfter = invoices.data[invoices.data.length - 1].id;
     }
   }
+
+  console.log(`Fetched ${allInvoices.length} invoices for ${year}!`);
+
   return allInvoices;
 }
 
@@ -83,8 +89,9 @@ const downloadAllInvoicesForYear = async (
   downloadPath,
   parallelDownloads
 ) => {
+  console.log(chalk.blue(`Downloading invoices for ${year} ...`));
+
   const invoices = await fetchInvoicesForYear(year);
-  console.log(`Total invoices for ${year}: ${invoices.length}`);
 
   if (invoices.length === 0) {
     console.log(chalk.yellow(`No invoices found for ${year}. Skipping...`));
