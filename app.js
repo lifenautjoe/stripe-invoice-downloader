@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const axios = require("axios");
 const chalk = require("chalk");
-const ProgressBar = require("progress");
+const readline = require('readline');
 
 require("dotenv").config();
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
@@ -91,11 +91,6 @@ const downloadAllInvoicesForYear = async (
     return;
   }
 
-  const bar = new ProgressBar(
-    chalk.blue(`[:bar] Downloading for ${year} :percent`),
-    { total: invoices.length }
-  );
-
   const folderPath = path.join(downloadPath, year.toString());
   mkdirp.sync(folderPath); // Ensure the directory exists
 
@@ -110,7 +105,7 @@ const downloadAllInvoicesForYear = async (
     await Promise.all(
       chunk.map((invoice) => {
         console.log(chalk.green(`Downloading Invoice-${invoice.number} ...`));
-        return downloadInvoicePDF(invoice, downloadPath).then(() => bar.tick());
+        return downloadInvoicePDF(invoice, downloadPath);
       })
     );
   }
