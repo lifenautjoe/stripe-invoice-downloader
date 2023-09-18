@@ -35,7 +35,7 @@ This utility is designed to help you automatically download your invoices from S
 To download invoices:
 
 ```bash
-node index.js download --year=2023
+node app.js download --year=2023
 ```
 
 **Available options:**
@@ -45,13 +45,13 @@ node index.js download --year=2023
 - `--parallel`: Number of invoices to download in parallel. Default is 10.
 
   ```bash
-  node index.js download --years=2023,2022 --parallel=5
+  node app.js download --years=2023,2022 --parallel=5
   ```
 
 - `--path`: Define the directory path where you want to save the invoices. By default, it will save in the current directory.
 
   ```bash
-  node index.js download --years=2023,2022 --path=/path/to/directory
+  node app.js download --years=2023,2022 --path=/path/to/directory
   ```
 
 ## Troubleshooting:
