@@ -42,18 +42,18 @@ node index.js download --year=2023
 
 **Available options:**
 
-- `--year`: Define the year you want to download invoices for. (Required)
+- `--years`: Define the years you want to download invoices for. (Required)
   
 - `--parallel`: Number of invoices to download in parallel. Default is 10.
 
   ```bash
-  node index.js download --year=2023 --parallel=5
+  node index.js download --years=2023,2022 --parallel=5
   ```
 
 - `--path`: Define the directory path where you want to save the invoices. By default, it will save in the current directory.
 
   ```bash
-  node index.js download --year=2023 --path=/path/to/directory
+  node index.js download --years=2023,2022 --path=/path/to/directory
   ```
 
 ## Troubleshooting:
