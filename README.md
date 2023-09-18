@@ -35,7 +35,7 @@ This utility is designed to help you automatically download your invoices from S
 To download invoices:
 
 ```bash
-node app.js download --year=2023
+node app.js download --years=2023,2022
 ```
 
 **Available options:**
