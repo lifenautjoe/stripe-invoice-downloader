@@ -1,7 +1,5 @@
 # Stripe Invoice Downloader
 
-[![Creative Commons License](https://i.creativecommons.org/l/by/4.0/88x31.png)](http://creativecommons.org/licenses/by/4.0/)
-
 This utility is designed to help you automatically download your invoices from Stripe for a specified year. Using this command-line utility, you can define where the invoices are saved and how many files to download in parallel to make the process efficient.
 
 ## Features:
